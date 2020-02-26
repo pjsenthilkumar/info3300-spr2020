@@ -76,7 +76,7 @@
     </code>
   </pre>
 
-  <!--- Code for today's class --->
+  <!--- Code for today's class ---->
   <script id="notes1">
 
 
@@ -91,13 +91,54 @@
     console.log(circles);
     
     // 1. Old way
+    // let elements = demo.selectAll("circle").data(circles);
+
+    // //Exit => remove stuff
+    // elements.exit().remove();
+
+
+    // //Enter => stuff you need to make
+
+    // elements.enter()
+    //   .append("circle")
+    //   .attr("r", 20)
+    //   .attr("fill", "steelblue")
+    //   //update
+    //   .merge(elements)   // inserting all of the stuff into this chain of functions, going to impact all new and old circles 
+    //   .attr("cx", d => d['x']) 
+    //   .attr("cy", d => d['y']);
+
     
        
     // 2. New way
+    // demos.selectAll("circle").data(Circles)
+    // .join(
+    //   enter => {
+    //     enter.append("circle")
+    //       .attr("r", 20)
+    //       .attr("fill", "steelblue")
+    //   },
+    //   update => { } //points that already exist, update them
+    //   exit=> { 
+    //     exit.remove()
+    //   }
+    // )
+    // //For every point is there
+    // .attr("cx", d => d['x']) 
+    // .attr("cy", d => d['y'])
+
+
+
     
        
     // 3. Shorthand version
-    
+    demos.selectAll("circle").data(Circles)
+    .join("circle")
+      .attr("r", 20)
+      .attr("fill", "steelblue")
+      .attr("cx", d => d['x']) 
+      .attr("cy", d => d['y']);
+
                        
     
     
